@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/hlgboot/gopportunities/handler"
 )
 
 func initializeRoutes(r *gin.Engine) {
@@ -14,19 +15,19 @@ func initializeRoutes(r *gin.Engine) {
 		// Verify api availability
 		v1.GET("/healthy", func(ctx *gin.Context) { ctx.JSON(http.StatusOK, gin.H{"success": true}) })
 
-		//
-		v1.GET("/opening", func(ctx *gin.Context) { ctx.JSON(http.StatusOK, gin.H{"msg": "GET Opening"}) })
+		// SHOW Opening
+		v1.GET("/opening", handler.ShowOpeningHandler)
 
-		//
-		v1.POST("/opening", func(ctx *gin.Context) { ctx.JSON(http.StatusOK, gin.H{"msg": "POST Opening"}) })
+		// CREATE Opening
+		v1.POST("/opening", handler.CreateOpeningHandler)
 
-		//
-		v1.DELETE("/opening", func(ctx *gin.Context) { ctx.JSON(http.StatusOK, gin.H{"msg": "DELETE Opening"}) })
+		// DELETE Opening
+		v1.DELETE("/opening", handler.DeleteOpeningHandler)
 
-		//
-		v1.PUT("/opening", func(ctx *gin.Context) { ctx.JSON(http.StatusOK, gin.H{"msg": "PUT Opening"}) })
+		// UPDATE Opening
+		v1.PUT("/opening", handler.UpdateOpeningHandler)
 
-		//
-		v1.GET("/openings", func(ctx *gin.Context) { ctx.JSON(http.StatusOK, gin.H{"msg": "GET Openings"}) })
+		// LIST Openings
+		v1.GET("/openings", handler.ListOpeningsHandler)
 	}
 }
