@@ -9,6 +9,9 @@ import (
 
 func initializeRoutes(r *gin.Engine) {
 
+	// Initialize Handler
+	handler.InitializeHandler()
+
 	// Define the routes
 	v1 := r.Group("/api/v1")
 	{
